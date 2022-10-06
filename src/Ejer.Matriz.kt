@@ -7,6 +7,8 @@ fun main (){
     val char = '\n'
     var fila = 0
     var col = 0
+    var i = 0
+
 
     string.forEach {
         if (it == char)
@@ -25,8 +27,15 @@ fun main (){
     }
 
     array.forEach{
-        println(array[fila])
+        println(array[i])
+        i++
     }
+
+
+}
+
+fun imprimir (array: ArrayList<Any>){
+
 
 
 }
