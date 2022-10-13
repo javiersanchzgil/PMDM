@@ -9,27 +9,30 @@ fun main (){
     var cifrado:String = ""
     var i = 0
     var cont = 0
-    var tam = array.size
+    val TAM = array.size
 
-    println(tam)
 
     palabra.forEach {
-
         do {
             if (it.lowercaseChar() == array[i]) {
                 cont = i + ROT
-                cifrado += array[cont]
-                cont = 0
+                if (cont > TAM-1) {
+                    cont = cont - TAM
+                    cifrado += array[cont].toString()
+                    cont = 0
+                    i=TAM
+                }
 
+            else
+                if (cont < TAM-1){
+                    cifrado += array[cont].toString()
+                    cont = 0
+                    i=TAM
+                    }
             }
-                i++
-
-        }while (i > tam)
-        }
-
-    println(cifrado)
-
-
-
-
+            i++
+            } while (i < TAM)
+            i = 0
+    }
+    println("El cifrado sería " + cifrado)
 }
