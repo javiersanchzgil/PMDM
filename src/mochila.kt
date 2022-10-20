@@ -6,19 +6,54 @@ fun main (){
 
   personaje("Javier",W,"Ladron")
     val articulos = arrayListOf<articulo>(articulo(3,50),articulo(6,30),articulo(4,70),articulo(5,70))
+    val listRatio = mutableListOf<Int>()
+    val mochila = mutableListOf<articulo>()
     var i :Int = 0
+    var pos = 0
+
 
     articulos.forEach(){
-        do {
-            if (it.wi < articulos[i])
-                i++
-        }while (i < articulos.size)
-
-
-
+       var ratio = it.vi/it.wi
+        listRatio.add(ratio)
     }
 
-    println(articulos.toString())
+    var max = listRatio[0]
+
+    listRatio.forEach(){
+        i++
+        if (it > max){
+            pos = i-1
+        }
+    }
+    mochila.add(articulos[pos])
+
+    listRatio.removeAt(pos)
+    articulos.removeAt(pos)
+
+    max = listRatio[0]
+    pos = 0
+    i = 0
+
+    listRatio.forEach(){
+        i++
+        if (it > max || it == max){
+            pos = i-1
+        }
+    }
+
+    if (articulos[pos].wi + mochila[0].wi <= 10){
+        mochila.add(articulos[pos])
+    }
+
+    listRatio.removeAt(pos)
+    articulos.removeAt(pos)
+
+    println("Robado:" + mochila)
+
+
+    println(articulos[pos])
+    println(listRatio)
+    println(articulos)
 
 }
 
