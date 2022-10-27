@@ -3,59 +3,69 @@ import java.util.Objects
 fun main (){
 
     val W = 10
+    var peso = 0
+    var bo = true
 
-  personaje("Javier",W,"Ladron")
-    val articulos = arrayListOf<articulo>(articulo(3,50),articulo(6,30),articulo(4,70),articulo(5,70))
-    val listRatio = mutableListOf<Int>()
-    val mochila = mutableListOf<articulo>()
-    var i :Int = 0
-    var pos = 0
+      personaje("Javier",W,"Ladron")
+        val articulos = arrayListOf<articulo>(articulo(3,50),articulo(6,30),articulo(4,70),articulo(3,70))
+        val listRatio = mutableListOf<Int>()
+        val mochila = mutableListOf<articulo>()
+        var i :Int = 0
+        var pos = 0
 
 
-    articulos.forEach(){
-       var ratio = it.vi/it.wi
-        listRatio.add(ratio)
-    }
-
-    var max = listRatio[0]
-
-    listRatio.forEach(){
-        i++
-        if (it > max){
-            pos = i-1
+        articulos.forEach(){
+           var ratio = it.vi/it.wi
+            listRatio.add(ratio)
         }
-    }
-    mochila.add(articulos[pos])
 
-    listRatio.removeAt(pos)
-    articulos.removeAt(pos)
+        var max = listRatio[0]
 
-    max = listRatio[0]
-    pos = 0
-    i = 0
-
-    listRatio.forEach(){
-        i++
-        if (it > max || it == max){
-            pos = i-1
+        listRatio.forEach(){
+            i++
+            if (it > max){
+                pos = i-1
+            }
         }
-    }
-
-    if (articulos[pos].wi + mochila[0].wi <= 10){
         mochila.add(articulos[pos])
-    }
 
-    listRatio.removeAt(pos)
-    articulos.removeAt(pos)
+        listRatio.removeAt(pos)
+        articulos.removeAt(pos)
+
+
+
+
+
+        do {
+
+            peso = 0
+            max = listRatio[0]
+            pos = 0
+            i = 0
+            listRatio.forEach(){
+                i++
+                if (it > max || it == max){
+                    pos = i-1
+                }
+            }
+
+            mochila.forEach(){
+                peso = peso + it.wi
+            }
+
+            if (peso + articulos[pos].wi <= 10){
+                mochila.add(articulos[pos])
+                listRatio.removeAt(pos)
+                articulos.removeAt(pos)
+            }
+            else
+                bo=false
+
+        }while (bo)
 
     println("Robado:" + mochila)
-
-
-    println(articulos[pos])
-    println(listRatio)
-    println(articulos)
-
 }
+
 
 class personaje  {
     var nombre: String
