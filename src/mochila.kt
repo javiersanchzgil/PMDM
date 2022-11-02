@@ -2,7 +2,7 @@ import java.util.Objects
 
 fun main (){
 
-    val W = 10
+  /*  val W = 10
     var peso = 0
     var bo = true
 
@@ -77,6 +77,9 @@ class personaje  {
         this.mochila = mochila
         this.tipo = tipo
     }
+    else
+        listRatio.removeAt(pos)
+
 
     override fun toString(): String {
         return "personaje(nombre='$nombre', mochila=$mochila, tipo='$tipo')"
@@ -96,6 +99,6 @@ class articulo {
     override fun toString(): String {
         return "articulo(peso=$wi, valor=$vi)"
     }
-
+*/
 
 }
