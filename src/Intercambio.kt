@@ -117,7 +117,7 @@ class Personaje3{
     var estado: String = ""
     var clase : String = ""
     var raza : String = ""
-    var mochila = arrayListOf<articulo>()
+    var mochila = mutableListOf<articulo>()
     var tamMochila : Int = 0
     var monedero = mutableMapOf<Int,Int>(100 to 0, 25 to 0, 10 to 0, 5 to 0, 1 to 0)
 
